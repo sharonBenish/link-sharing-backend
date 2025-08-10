@@ -4,6 +4,9 @@
   "description": "API for link sharing app",
   "main": "index.js",
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "build": "echo \"No build step defined\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "sharonBW",
