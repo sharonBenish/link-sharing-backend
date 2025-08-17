@@ -5,6 +5,9 @@ const editProfile = async (req, res) => {
     const { firstName, lastName, profileImage } = req.body;
 
     try {
+        if (req.user.id !== userId) {
+            return res.status(403).json({ message: "You can only update your own profile" });
+        };
         const updatedUser = await User.findByIdAndUpdate(
             userId,
             { firstName, lastName, profileImage },

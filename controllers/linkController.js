@@ -22,11 +22,13 @@ const addLinks = async (req, res) => {
 };
 
 const getLinks = async (req, res) => {
-    const { userId } = req.params;
-    if (!userId) {
-        return res.status(400).json({ message: 'User ID is required' });
-    }
+    // const { userId } = req.params;
+    // if (!userId) {
+    //     return res.status(400).json({ message: 'User ID is required' });
+    // }
     try {
+        const userId = req.user.id; // Get userId from authenticated user
+        if (req.user.id !== userId) return res.status(403).json({ message: "You can only access your own links" });
         const links = await Link.find({ userId }).sort({ order: 1 });
         res.status(200).json({ result: links });
     } catch (error) {
