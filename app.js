@@ -12,7 +12,10 @@ const app = express();
 
 // Middleware to enable CORS
 app.use(cors({
-  origin: '*', // Allow all origins, adjust as necessary for security,
+  origin: [
+    "http://localhost:5173", // for local dev
+    "https://link-sharing-app-wiae-git-main-sharonbenishs-projects.vercel.app/" // replace with your actual frontend domain
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
   credentials: true // Allow credentials if needed
