@@ -16,10 +16,15 @@ app.use(cors({
     "http://localhost:5173", // for local dev
     "https://link-sharing-app-beta-three.vercel.app" // replace with your actual frontend domain
   ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
-  credentials: true // Allow credentials if needed
+  credentials: false // Allow credentials if needed
 }));
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Credentials", "true");
+  next();
+});
 
 // Middleware to parse JSON bodies
 app.use(express.json());
