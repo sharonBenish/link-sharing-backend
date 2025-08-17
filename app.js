@@ -14,12 +14,15 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:5173", // for local dev
-    "https://link-sharing-app-wiae-git-main-sharonbenishs-projects.vercel.app/" // replace with your actual frontend domain
+    "https://link-sharing-app-beta-three.vercel.app/" // replace with your actual frontend domain
   ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
   credentials: true // Allow credentials if needed
 }));
+
+// Handle preflight requests globally
+app.options('*', cors());
 
 // Middleware to parse JSON bodies
 app.use(express.json());
