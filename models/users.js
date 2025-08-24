@@ -26,8 +26,9 @@ const userSchema = new Schema({
     type: String,
     default: '',
   },
-  refreshToken: {
-    type: String,
+  refreshTokens: {
+    type: [String],
+    default: [],
   },
 }, {
   timestamps: true, // Automatically manage createdAt and updatedAt fields

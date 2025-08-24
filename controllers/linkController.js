@@ -5,7 +5,6 @@ const addLinks = async (req, res) => {
     const userId = req.user.id;
 
     if (!Array.isArray(links) || links.length === 0) {
-        console.log(req.body)
         return res.status(400).json({ message: 'Invalid links format. Expected an array of links.' });
     }
     try {
