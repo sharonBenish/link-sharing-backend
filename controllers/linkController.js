@@ -8,6 +8,7 @@ const addLinks = async (req, res) => {
         return res.status(400).json({ message: 'Invalid links format. Expected an array of links.' });
     }
     try {
+        await Link.deleteMany({ userId });
         const newLinks = links.map((link, index) => ({ 
             ...link,
             userId: userId,
